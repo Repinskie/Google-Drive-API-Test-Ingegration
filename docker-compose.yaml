@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  postgresql:
+    image: postgres:16-alpine
+    container_name: google-drive-api-container
+    ports:
+      - '5439:5432'
+    restart: always
+    environment:
+      POSTGRES_USER: google-drive-api
+      POSTGRES_PASSWORD: google-drive-api-2024
+      POSTGRES_DB: google_drive_api_db
+    volumes:
+      - google_drive_api_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${google_drive_api_db}"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  google_drive_api_db: {}

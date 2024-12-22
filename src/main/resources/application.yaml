@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: default
+  application:
+    name: google-drive-api-test
+  datasource:
+    url: jdbc:postgresql://localhost:5439/google_drive_api_db
+    username: google-drive-api
+    password: google-drive-api-2024
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-IDENTITY: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    default-schema: google_drive_api
+server:
+  port: 8899
+  servlet:
+    context-path: /google-drive-api-test
+
